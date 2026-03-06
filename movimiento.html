@@ -5,6 +5,84 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hippismo & Movimiento Social — Detrás del Tiempo</title>
 <link rel="stylesheet" href="style.css">
+<style>
+  /* ── Citation superscripts ── */
+  .cite-link {
+    font-size: 0.72em;
+    vertical-align: super;
+    color: var(--rust, #b85c38);
+    text-decoration: none;
+    font-family: 'Georgia', serif;
+    font-weight: 700;
+    margin-left: 1px;
+    border-bottom: 1px dotted var(--rust, #b85c38);
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .cite-link:hover {
+    color: var(--burnt, #8b3a1e);
+    border-color: var(--burnt, #8b3a1e);
+  }
+
+  /* ── Read-more toggle ── */
+  .text-expandable {
+    position: relative;
+  }
+  .text-collapsed .expandable-body {
+    max-height: 320px;
+    overflow: hidden;
+  }
+  .text-collapsed .fade-overlay {
+    display: block;
+  }
+  .fade-overlay {
+    display: none;
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent, var(--cream, #fdf6e3));
+    pointer-events: none;
+  }
+  /* make sure the overlay blends with card background */
+  .card .fade-overlay {
+    background: linear-gradient(to bottom, transparent, #fdf6e3);
+  }
+
+  .read-more-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 14px;
+    background: none;
+    border: 2px solid var(--rust, #b85c38);
+    color: var(--rust, #b85c38);
+    font-family: 'Caveat', cursive, sans-serif;
+    font-size: 1.05rem;
+    padding: 6px 18px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    letter-spacing: 0.03em;
+  }
+  .read-more-toggle:hover {
+    background: var(--rust, #b85c38);
+    color: #fff;
+  }
+  .toggle-icon {
+    transition: transform 0.3s;
+    font-style: normal;
+  }
+  .text-expanded .toggle-icon {
+    transform: rotate(180deg);
+  }
+
+  /* ── Paragraphs inside article ── */
+  .essay-paragraph {
+    font-size: 0.97rem;
+    line-height: 1.85;
+    margin-bottom: 1.1em;
+    color: var(--brown, #4a3728);
+  }
+</style>
 </head>
 <body>
 
@@ -47,106 +125,210 @@
         </div>
         <h1 class="card-title">"¡Llegué al festival!"</h1>
 
-       <div class="testimony">
-  <div class="testimony-tape"></div>
-
-    <p class="testimony-intro">
-      Antes de llegar al campo me encuentro con dos hermanas que viajaron desde
-      Massachusetts. Christina y Wanda Giza. Les pregunto cómo se siente
-      estar aquí, en medio de todo esto.
-    </p>
-  
-    <div class="testimony-header">
-      <div class="testimony-avatar">👯</div>
-      <div class="testimony-who">
-        <span class="testimony-name">Las Hermanas Giza</span>
-        <span class="testimony-from">✦ Massachusetts · Woodstock, agosto 1969</span>
-      </div>
-    </div>
-  
-    <div class="testimony-quotes">
-  
-      <p class="testimony-bridge">Christina se queda mirando el mar de gente y se ríe un poco antes de responder:</p>
-  
-      <div class="testimony-line">
-        <div class="testimony-speaker">Christina —</div>
-        <p class="testimony-text">"Ojalá pudiera embotellar esta sensación. Es increíble. Todo el mundo está
-        aquí simplemente porque quiere estar aquí."</p>
-      </div>
-  
-      <p class="testimony-bridge">Wanda asiente y añade:</p>
-  
-      <div class="testimony-line">
-        <div class="testimony-speaker">Wanda —</div>
-        <p class="testimony-text">"Lo mejor es que nadie tuvo que planearlo demasiado. Simplemente vienes.
-        No tienes que saber todo de antemano, no tienes que organizar cada detalle.
-        Solo vienes y lo haces."</p>
-      </div>
-  
-      <p class="testimony-bridge">Me señalan la colina llena de gente sentada en el barro escuchando la música.</p>
-  
-      <div class="testimony-line">
-        <div class="testimony-speaker">Christina —</div>
-        <p class="testimony-text">"Eso es lo que más me impresiona. Toda esta gente compartiendo lo que tiene,
-        cuidándose unos a otros. Es como si, por unos días, todos hubiéramos decidido
-        que la paz sí es posible."</p>
-      </div>
-  
-    </div>
-  </div>
-        <div class="academic-box">
-          <h4>¿Qué es un movimiento social?</h4>
-          <p>
-            Un movimiento social es una forma de acción colectiva organizada que busca producir
-            o resistir cambios sociales, políticos o culturales. Según el sociólogo Charles Tilly,
-            se caracteriza por tres elementos: una campaña sostenida de reivindicaciones, un
-            repertorio de acción (marchas, huelgas, performances) y demostraciones públicas de
-            valor, unidad y cantidad. Los movimientos sociales emergen cuando grupos de personas
-            comparten una injusticia percibida y tienen suficiente organización para actuar
-            coordinadamente (Tarrow, 1994).
-            <br><br>
-            Sidney Tarrow, en <em>Power in Movement</em>, distingue los movimientos sociales de
-            otras formas de protesta por su carácter sostenido y su capacidad para crear solidaridad
-            colectiva duradera. No basta con una marcha o un concierto: hace falta identidad, narrativa
-            compartida y acción reiterada en el tiempo.
+        <!-- ── Testimony block (unchanged) ── -->
+        <div class="testimony">
+          <div class="testimony-tape"></div>
+          <p class="testimony-intro">
+            Antes de llegar al campo me encuentro con dos hermanas que viajaron desde
+            Massachusetts. Christina y Wanda Giza. Les pregunto cómo se siente
+            estar aquí, en medio de todo esto.
           </p>
+          <div class="testimony-header">
+            <div class="testimony-avatar">👯</div>
+            <div class="testimony-who">
+              <span class="testimony-name">Las Hermanas Giza</span>
+              <span class="testimony-from">✦ Massachusetts · Woodstock, agosto 1969</span>
+            </div>
+          </div>
+          <div class="testimony-quotes">
+            <p class="testimony-bridge">Christina se queda mirando el mar de gente y se ríe un poco antes de responder:</p>
+            <div class="testimony-line">
+              <div class="testimony-speaker">Christina —</div>
+              <p class="testimony-text">"Ojalá pudiera embotellar esta sensación. Es increíble. Todo el mundo está
+              aquí simplemente porque quiere estar aquí."</p>
+            </div>
+            <p class="testimony-bridge">Wanda asiente y añade:</p>
+            <div class="testimony-line">
+              <div class="testimony-speaker">Wanda —</div>
+              <p class="testimony-text">"Lo mejor es que nadie tuvo que planearlo demasiado. Simplemente vienes.
+              No tienes que saber todo de antemano, no tienes que organizar cada detalle.
+              Solo vienes y lo haces."</p>
+            </div>
+            <p class="testimony-bridge">Me señalan la colina llena de gente sentada en el barro escuchando la música.</p>
+            <div class="testimony-line">
+              <div class="testimony-speaker">Christina —</div>
+              <p class="testimony-text">"Eso es lo que más me impresiona. Toda esta gente compartiendo lo que tiene,
+              cuidándose unos a otros. Es como si, por unos días, todos hubiéramos decidido
+              que la paz sí es posible."</p>
+            </div>
+          </div>
         </div>
 
-        <div class="academic-box">
-          <h4>¿El hippismo califica como movimiento social?</h4>
-          <p>
-            Sí, el hippismo cumple los criterios de un movimiento social, aunque con particularidades.
-            Surgido en San Francisco hacia 1965, articuló un rechazo activo a la guerra de Vietnam,
-            al consumismo, al racismo y a las normas conservadoras de la posguerra. Su repertorio
-            de acción fue heterodoxo: festivales masivos, marchas pacíficas, communes rurales, moda
-            y arte como formas de disidencia. Woodstock fue su manifestación más masiva: una
-            demostración de que era posible organizarse en paz sin el Estado ni el mercado.
-            <br><br>
-            Sin embargo, el hippismo también fue criticado por su evasión política directa, su
-            tendencia al individualismo espiritual y por ser en gran medida un fenómeno de clases
-            medias blancas que ignoraba las luchas del Movimiento por los Derechos Civiles
-            afroamericano, que ocurría en paralelo y con mayor urgencia y riesgo.
-          </p>
-        </div>
+        <!-- ── Essay with expandable body ── -->
+        <div class="text-expandable text-collapsed" id="essay-block">
+          <div class="expandable-body">
 
-        <div class="academic-box">
-          <h4>¿Tiene vigencia hoy el hippismo?</h4>
-          <p>
-            Como propuesta integral de vida, el hippismo histórico no sobrevivió —fue absorbido
-            por la industria cultural y el mercado, los mismos que buscaba rechazar. La "venta"
-            del verano del amor no tardó: para 1969, las mismas flores que simbolizaban la
-            contracultura ya estaban en bolsas de papel de almacén.
-            <br><br>
-            Pero sus ideas tienen ecos muy presentes: el ecologismo y la crisis climática retoman
-            la relación armónica con la naturaleza; el feminismo contemporáneo hereda parte de su
-            cuestionamiento a los roles de género; los festivales de música siguen siendo espacios
-            de comunidad y resistencia simbólica. La pregunta que Woodstock hace en 1969 —¿es
-            posible otro mundo?— sigue siendo válida en 2024. La respuesta, lamentablemente,
-            sigue siendo incierta.
-          </p>
-        </div>
+            <p class="essay-paragraph">
+              Para aquellos lectores que hasta el momento se han sentido un poco perdidos, quiero ofrecerles
+              mis más sinceras disculpas. Mis estudios en Cronomusicología me han dado una visión algo sesgada
+              de lo que se considera "cultura general". Seguramente, para muchos de ustedes estoy haciendo mi
+              Trabajo de Grado sobre un festival de música cualquiera… pero déjenme decirles que no es así.
+              El festival de Woodstock fue un hito extremadamente importante en la historia de la música, no
+              solo por la magnitud del evento o por las actuaciones que allí tuvieron lugar, sino porque se
+              convirtió en una de las expresiones más visibles de la contracultura de los años sesenta. En
+              este sentido, Woodstock representó muchos de los ideales asociados con el movimiento social
+              hippie, como la búsqueda de la paz, la vida en comunidad, el rechazo a la violencia
+              (especialmente en el contexto de la guerra de Vietnam) y la promoción de formas alternativas
+              de convivencia social.<a href="fuentes.html#f9" class="cite-link" title="Movimiento hippie – Concepto">[9]</a>
+            </p>
 
-        <div class="quote-block">
+            <p class="essay-paragraph">
+              Ahora bien, antes de que sigamos avanzando en este pequeño viaje histórico (y temporal), hay
+              una distinción sociológica importante que recuerdo claramente de una de mis primeras clases de
+              Cronomusicología Social. No todo comportamiento colectivo es automáticamente un movimiento
+              social. A veces los grupos humanos simplemente reaccionan juntos ante algo: una moda que aparece
+              de la nada, un rumor que se propaga como si tuviera vida propia, o incluso un pánico colectivo.
+              Todo eso entra en lo que los sociólogos llaman comportamiento colectivo.<a href="fuentes.html#f2" class="cite-link" title="El concepto de movimiento social – Última Década">[2]</a>
+              Un movimiento social, en cambio, es algo más organizado, aunque no siempre tenga líderes claros
+              ni estructuras formales.<a href="fuentes.html#f1" class="cite-link" title="Qué son los movimientos sociales – UNIR">[1]</a>
+              Implica que un grupo de personas comienza a verse a sí mismo como parte de una misma causa y
+              desarrolla una identidad colectiva.<a href="fuentes.html#f2" class="cite-link" title="El concepto de movimiento social – Última Década">[2]</a>
+              Además, suele existir un proyecto social detrás: una idea, más o menos definida, de cómo debería
+              cambiar la sociedad. Dicho de otra forma, un movimiento social no solo dice "esto está mal",
+              sino que también intenta imaginar cómo podría ser el mundo si las cosas fueran distintas.<a href="fuentes.html#f1" class="cite-link" title="Qué son los movimientos sociales – UNIR">[1]</a>
+            </p>
+
+            <p class="essay-paragraph">
+              A partir de la segunda mitad del siglo XX, los sociólogos empezaron a notar que algunos
+              movimientos ya no encajaban del todo en las categorías tradicionales. Autores como Alain
+              Touraine y Alberto Melucci hablaron entonces de los llamados "nuevos movimientos sociales".<a href="fuentes.html#f3" class="cite-link" title="De la acción – Argumentos UAM">[3]</a>
+              A diferencia de los movimientos clásicos, como los obreros del siglo XIX, estos no se centraban
+              únicamente en cuestiones económicas o en conquistar el poder del Estado. Más bien giraban
+              alrededor de temas como la identidad, la cultura, la autonomía individual y la calidad de vida.<a href="fuentes.html#f3" class="cite-link" title="De la acción – Argumentos UAM">[3]</a>
+              En cierto sentido, funcionaban como una especie de espejo incómodo para la sociedad: ponían en
+              evidencia valores que parecían incuestionables y preguntaban, básicamente, "¿y si no tiene que
+              ser así?".<a href="fuentes.html#f3" class="cite-link" title="De la acción – Argumentos UAM">[3]</a>
+            </p>
+
+            <p class="essay-paragraph">
+              Si aplicamos estos criterios al caso que nos interesa, el hippiesmo encaja perfectamente en
+              esta categoría.<a href="fuentes.html#f9" class="cite-link" title="Movimiento hippie – Concepto">[9]</a>
+              Surgió en Estados Unidos durante la década de 1960 como parte de un descontento generacional
+              bastante profundo.<a href="fuentes.html#f5" class="cite-link" title="Movimiento Hippie – UNAM">[5]</a>
+              Muchos jóvenes comenzaron a cuestionar el modelo de vida dominante de la posguerra: trabajo
+              estable, casa suburbana, consumo constante y una confianza casi automática en las
+              instituciones.<a href="fuentes.html#f5" class="cite-link" title="Movimiento Hippie – UNAM">[5]</a>
+              A esto se sumaba el contexto político del momento, especialmente la guerra de Vietnam, que para
+              muchos jóvenes representaba todo aquello que sentían que estaba mal con el sistema.<a href="fuentes.html#f7" class="cite-link" title="La contracultura de los sesenta – TFM Unizar">[7]</a>
+            </p>
+
+            <p class="essay-paragraph">
+              En respuesta, el movimiento hippie empezó a proponer algo radical para la época: una forma
+              distinta de vivir. Sus ideales giraban en torno a la paz, la libertad personal, la vida en
+              comunidad y una relación más armónica con la naturaleza.<a href="fuentes.html#f4" class="cite-link" title="Hippie – Wikipedia">[4]</a>
+              Si uno escucha con atención la música de la época estas ideas aparecen constantemente.
+              Canciones como <em>All You Need Is Love</em> de The Beatles o <em>Give Peace a Chance</em> de
+              John Lennon capturan bastante bien ese espíritu.<a href="fuentes.html#f8" class="cite-link" title="Hippie – Concepto.de">[8]</a>
+            </p>
+
+            <p class="essay-paragraph">
+              Por supuesto, el hippiesmo tampoco apareció de la nada. Tuvo influencias importantes de la
+              llamada Generación Beat, un grupo de escritores y artistas de los años cincuenta que ya
+              cuestionaban muchas normas sociales y cultivaban un estilo de vida bohemio.<a href="fuentes.html#f6" class="cite-link" title="La Generación Hippie – Acta Académica">[6]</a>
+              Sin embargo, mientras los beats tenían un tono más existencialista, los hippies adoptaron una
+              postura más optimista. En lugar de limitarse a criticar la sociedad existente, intentaban
+              imaginar una alternativa.<a href="fuentes.html#f6" class="cite-link" title="La Generación Hippie – Acta Académica">[6]</a>
+            </p>
+
+            <p class="essay-paragraph">
+              Uno de los rasgos más característicos del movimiento fue su énfasis en la transformación
+              personal. Para muchos hippies, el cambio social debía comenzar con el cambio interior del
+              individuo.<a href="fuentes.html#f9" class="cite-link" title="Movimiento hippie – Concepto">[9]</a>
+              Por eso el movimiento incorporó prácticas como la meditación, el interés por filosofías
+              orientales y una búsqueda espiritual que escapaba de las instituciones religiosas
+              tradicionales. En algunos casos, incluso el uso de sustancias psicodélicas como el LSD se
+              interpretaba como una forma de expandir la conciencia y cuestionar las limitaciones culturales
+              impuestas por la sociedad occidental.<a href="fuentes.html#f7" class="cite-link" title="La contracultura de los sesenta – TFM Unizar">[7]</a>
+            </p>
+
+            <p class="essay-paragraph">
+              Aunque a menudo se describe al movimiento hippie como apolítico, esa idea no es del todo
+              precisa (seamos sinceros, ¿dónde no se encuentra la política?). Lo que muchos hippies
+              rechazaban era la política institucional tradicional: partidos, jerarquías y burocracias. Pero
+              eso no significa que fueran indiferentes a los problemas políticos de su tiempo. De hecho, el
+              movimiento tuvo una influencia importante en el activismo pacifista contra la guerra de
+              Vietnam.<a href="fuentes.html#f5" class="cite-link" title="Movimiento Hippie – UNAM">[5]</a>
+              A través de protestas, música y manifestaciones públicas, los hippies promovieron una cultura
+              de paz que cuestionaba directamente la legitimidad de la guerra. No por nada consignas como
+              "Make love, not war" se volvieron uno de los lemas más reconocibles de la
+              década.<a href="fuentes.html#f4" class="cite-link" title="Hippie – Wikipedia">[4]</a>
+            </p>
+
+            <p class="essay-paragraph">
+              En este contexto, el Festival de Woodstock de 1969 adquirió un significado especial. Más que
+              un simple concierto, Woodstock se convirtió en un momento de afirmación colectiva del
+              movimiento.<a href="fuentes.html#f9" class="cite-link" title="Movimiento hippie – Concepto">[9]</a>
+              Durante tres días —que realmente se extendieron a cuatro— cientos de miles de personas
+              convivieron en un espacio donde la música, el arte y la comunidad parecían demostrar que otra
+              forma de vida era, al menos por un momento, posible. Pero el hippiesmo no se limitó a los
+              conciertos ni a la música psicodélica. Muchos de sus seguidores intentaron llevar estos
+              ideales a la práctica mediante la creación de comunidades alternativas. Algunas personas
+              abandonaron las ciudades para fundar comunas rurales donde se practicaba la vida comunitaria,
+              el trabajo compartido y cierto grado de autosuficiencia.<a href="fuentes.html#f5" class="cite-link" title="Movimiento Hippie – UNAM">[5]</a>
+              La idea era simple: vivir de una forma menos dependiente del sistema económico dominante y más
+              conectada con la comunidad y la naturaleza.
+            </p>
+
+            <p class="essay-paragraph">
+              Como era de esperarse, el movimiento también recibió varias críticas. Algunos analistas
+              señalaron que el hippiesmo fue principalmente un fenómeno de jóvenes de clase media, quienes
+              podían permitirse "salirse del sistema" sin enfrentar las mismas dificultades económicas que
+              otros sectores sociales.<a href="fuentes.html#f10" class="cite-link" title="Is the hippie movement elitist? – YouTube">[10]</a>
+              Desde ciertas perspectivas marxistas, además, se ha argumentado que el movimiento carecía de
+              un proyecto político estructurado capaz de transformar las bases económicas de la
+              sociedad.<a href="fuentes.html#f9" class="cite-link" title="Movimiento hippie – Concepto">[9]</a>
+              Otra crítica frecuente sostiene que muchos de los símbolos del hippiesmo terminaron siendo
+              absorbidos por el mismo sistema que el movimiento intentaba cuestionar. La estética
+              psicodélica, la música e incluso la idea de la contracultura se convirtieron rápidamente en
+              productos comercializables. En otras palabras, el mercado hizo lo que mejor sabe hacer:
+              encontró una forma de generar ganancias.<a href="fuentes.html#f9" class="cite-link" title="Movimiento hippie – Concepto">[9]</a>
+            </p>
+
+            <p class="essay-paragraph">
+              Sin embargo, incluso teniendo en cuenta estas críticas, muchos autores consideran que el
+              impacto más profundo del hippiesmo fue cultural.<a href="fuentes.html#f9" class="cite-link" title="Movimiento hippie – Concepto">[9]</a>
+              El movimiento ayudó a transformar la manera en que muchas personas comenzaron a pensar sobre
+              la libertad individual, la sexualidad, la espiritualidad y la relación con la naturaleza. Y si
+              uno observa el mundo actual, es difícil negar que varias de esas ideas siguen presentes. De
+              hecho, en el siglo XXI algunas de las preocupaciones centrales del hippiesmo parecen haber
+              vuelto con más fuerza. La preocupación por el medio ambiente, por ejemplo, se ha convertido en
+              uno de los temas más urgentes de la política global.<a href="fuentes.html#f11" class="cite-link" title="La ecología profunda de Arne Naess – El Cuaderno">[11]</a><a href="fuentes.html#f12" class="cite-link" title="El ecologismo profundo de Arne Naess – TFG Unizar">[12]</a>
+              La crítica al consumo excesivo y la búsqueda de estilos de vida más sostenibles hoy aparecen
+              cada vez más como una necesidad. Algo similar ocurre con la cultura de paz que promovía el
+              movimiento. En un mundo marcado por tensiones políticas y conflictos internacionales, la idea
+              de resolver los problemas a través del diálogo y la cooperación sigue siendo profundamente
+              relevante.<a href="fuentes.html#f13" class="cite-link" title="La cultura de paz – El Economista">[13]</a>
+            </p>
+
+            <p class="essay-paragraph">
+              En definitiva, desde una perspectiva sociológica, el hippiesmo puede considerarse claramente
+              un movimiento social.<a href="fuentes.html#f1" class="cite-link" title="Qué son los movimientos sociales – UNIR">[1]</a><a href="fuentes.html#f2" class="cite-link" title="El concepto de movimiento social – Última Década">[2]</a>
+              Desarrolló una identidad colectiva, promovió valores compartidos y buscó transformar tanto la
+              cultura como las formas de vida de la sociedad. Y aunque muchas de sus formas originales han
+              cambiado con el tiempo, varias de las ideas que defendía —como la paz, la comunidad, la
+              libertad personal y el respeto por la naturaleza— siguen resonando en la sociedad
+              actual.<a href="fuentes.html#f9" class="cite-link" title="Movimiento hippie – Concepto">[9]</a>
+            </p>
+
+          </div><!-- /.expandable-body -->
+          <div class="fade-overlay"></div>
+        </div><!-- /.text-expandable -->
+
+        <button class="read-more-toggle" id="essay-toggle" onclick="toggleEssay()">
+          Leer más <em class="toggle-icon">▾</em>
+        </button>
+
+        <div class="quote-block" style="margin-top:28px">
           <blockquote>"We are stardust, we are golden, and we've got to get ourselves back to the garden."</blockquote>
           <cite>— Joni Mitchell, "Woodstock" (1970), escrita sin haber podido asistir al festival</cite>
         </div>
@@ -159,6 +341,7 @@
     </div>
   </main>
 
+  <aside>
     <div class="sidebar-widget">
       <p class="widget-title">📋 Entradas</p>
       <ul class="toc-list">
@@ -182,7 +365,6 @@
         <span class="context-tag">Nixon presidente</span>
         <span class="context-tag">Movimiento feminista</span>
         <span class="context-tag">Llegada a la Luna</span>
-        <br><br>
       </div>
     </div>
 
@@ -204,5 +386,24 @@
   <small style="opacity:0.5">© 2026</small>
 </footer>
 
+<script>
+  function toggleEssay() {
+    const block = document.getElementById('essay-block');
+    const btn   = document.getElementById('essay-toggle');
+    const isCollapsed = block.classList.contains('text-collapsed');
+
+    if (isCollapsed) {
+      block.classList.remove('text-collapsed');
+      block.classList.add('text-expanded');
+      btn.innerHTML = 'Leer menos <em class="toggle-icon" style="display:inline-block;transform:rotate(180deg)">▾</em>';
+    } else {
+      block.classList.remove('text-expanded');
+      block.classList.add('text-collapsed');
+      btn.innerHTML = 'Leer más <em class="toggle-icon">▾</em>';
+      // scroll back up to the essay start
+      block.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+</script>
 </body>
 </html>
