@@ -4,684 +4,292 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sobre Mí — Detrás del Tiempo</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Caveat:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<style>
-  /* ─── HERO HEADER ─── */
-  .hero {
-    background: var(--paper);
-    border-bottom: 4px double var(--burnt);
-    position: relative;
-    overflow: hidden;
-  }
 
-  .hero-tape {
-    height: 14px;
-    background: repeating-linear-gradient(90deg, rgba(212,160,23,0.35) 0px, rgba(212,160,23,0.35) 20px, transparent 20px, transparent 40px);
-    border-bottom: 1px solid rgba(212,160,23,0.4);
-  }
-
-  .hero-inner {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 50px 40px 20px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 40px;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-  }
-
-  .hero-bg-text {
-    position: absolute;
-    bottom: -20px;
-    right: -10px;
-    font-family: 'Playfair Display', serif;
-    font-size: 10rem;
-    font-weight: 700;
-    font-style: italic;
-    color: rgba(74,44,10,0.05);
-    white-space: nowrap;
-    user-select: none;
-    z-index: 1;
-    line-height: 1;
-  }
-
-  .hero-eyebrow {
-    font-family: 'Special Elite', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--rust);
-    background: rgba(196,94,26,0.1);
-    border: 1px solid rgba(196,94,26,0.2);
-    display: inline-block;
-    padding: 3px 10px;
-    margin-bottom: 14px;
-    animation: fadeIn 0.6s ease both;
-  }
-
-  .hero-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 4.5rem;
-    font-weight: 700;
-    color: var(--brown);
-    line-height: 0.95;
-    margin-bottom: 10px;
-    animation: fadeUp 0.7s ease both 0.1s;
-  }
-
-  .hero-name em {
-    display: block;
-    color: var(--burnt);
-    font-style: italic;
-    font-size: 3rem;
-  }
-
-  .hero-tagline {
-    font-family: 'Caveat', cursive;
-    font-size: 1.15rem;
-    color: var(--olive);
-    line-height: 1.6;
-    margin-top: 10px;
-    animation: fadeUp 0.7s ease both 0.2s;
-  }
-
-  .hero-avatar { animation: fadeIn 0.8s ease both 0.3s; flex-shrink: 0; }
-
-  .avatar-frame {
-    width: 160px;
-    height: 160px;
-    background: linear-gradient(135deg, #4a2c0a, #8b3a0f, #c45e1a, #6b7c3a);
-    border: 3px solid var(--mustard);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 5rem;
-    position: relative;
-    box-shadow: 4px 5px 0 rgba(74,44,10,0.3), 8px 10px 30px rgba(0,0,0,0.4);
-    transform: rotate(2deg);
-  }
-
-  .avatar-frame::after {
-    content: '';
-    position: absolute;
-    inset: 5px;
-    border: 1px solid rgba(212,160,23,0.3);
-    pointer-events: none;
-  }
-
-  .avatar-caption {
-    font-family: 'Caveat', cursive;
-    font-size: 0.8rem;
-    color: var(--rust);
-    text-align: center;
-    margin-top: 8px;
-    transform: rotate(-1deg);
-  }
-
-  .credentials {
-    border-top: 1px solid var(--fade);
-    margin-top: 22px;
-    padding-top: 16px;
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    animation: fadeUp 0.7s ease both 0.35s;
-  }
-
-  .cred-item { display: flex; flex-direction: column; gap: 2px; }
-
-  .cred-label {
-    font-size: 0.58rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--rust);
-  }
-
-  .cred-value {
-    font-family: 'Caveat', cursive;
-    font-size: 0.95rem;
-    color: var(--brown);
-    font-weight: 600;
-  }
-
-  /* hero nav */
-  .hero-nav {
-    border-top: 1px solid var(--fade);
-    margin-top: 16px;
-    padding: 10px 40px;
-    max-width: 860px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-
-  .hero-nav a {
-    font-family: 'Special Elite', monospace;
-    font-size: 0.68rem;
-    color: var(--rust);
-    text-decoration: none;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-    white-space: nowrap;
-    padding-bottom: 2px;
-  }
-
-  .hero-nav a:hover { color: var(--burnt); }
-  .hero-nav a.active { color: var(--burnt); border-bottom: 2px solid var(--burnt); }
-
-  /* ─── MAIN CONTENT ─── */
-  .main-wrap {
-    max-width: 860px;
-    margin: 45px auto;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: 1fr 250px;
-    gap: 36px;
-    align-items: start;
-  }
-
-  .card-header {
-    background: var(--brown);
-    padding: 12px 24px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .card-header-num {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 1.8rem;
-    color: rgba(212,160,23,0.4);
-    line-height: 1;
-  }
-
-  .card-header-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    font-style: italic;
-    color: var(--cream);
-    letter-spacing: 0.02em;
-  }
-
-  .card-header-icon { margin-left: auto; font-size: 1.4rem; opacity: 0.7; }
-
-  .card-text {
-    font-family: 'Special Elite', monospace;
-    font-size: 0.86rem;
-    line-height: 1.9;
-    color: #3a2510;
-  }
-
-  .card-text em { font-family: 'Caveat', cursive; font-size: 1.05rem; color: var(--rust); font-style: italic; }
-  .card-text strong { color: var(--brown); }
-
-  .warning-box {
-    background: rgba(212,160,23,0.1);
-    border: 1px dashed var(--mustard);
-    padding: 14px 18px;
-    margin: 18px 0;
-    position: relative;
-  }
-
-  .warning-box::before {
-    content: '⚠ ADVERTENCIA TEMPORAL';
-    position: absolute;
-    top: -9px; left: 12px;
-    background: var(--paper);
-    font-family: 'Special Elite', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.15em;
-    color: var(--mustard);
-    padding: 0 6px;
-  }
-
-  .warning-box p { font-family: 'Caveat', cursive; font-size: 0.98rem; color: var(--brown); line-height: 1.7; }
-
-  .hobby-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 12px;
-    margin: 18px 0;
-  }
-
-  .hobby-item {
-    background: rgba(74,44,10,0.06);
-    border: 1px solid var(--fade);
-    padding: 16px 12px;
-    text-align: center;
-    position: relative;
-  }
-
-  .hobby-item::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 3px;
-    background: var(--burnt);
-  }
-
-  .hobby-emoji { font-size: 2rem; display: block; margin-bottom: 8px; }
-  .hobby-name { font-family: 'Playfair Display', serif; font-size: 0.85rem; font-style: italic; color: var(--brown); margin-bottom: 4px; }
-  .hobby-note { font-family: 'Caveat', cursive; font-size: 0.78rem; color: var(--rust); line-height: 1.4; }
-
-  .travel-list { list-style: none; margin: 14px 0; }
-
-  .travel-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 10px 0;
-    border-bottom: 1px dotted var(--fade);
-    font-family: 'Special Elite', monospace;
-    font-size: 0.82rem;
-    color: #3a2510;
-    line-height: 1.6;
-  }
-
-  .travel-list li:last-child { border-bottom: none; }
-  .travel-flag { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
-  .travel-era { display: block; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rust); margin-bottom: 1px; }
-
-  .goals-list { list-style: none; margin: 14px 0; }
-
-  .goals-list li { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 14px; }
-
-  .goal-num {
-    width: 28px; height: 28px;
-    background: var(--burnt);
-    border: 2px solid var(--mustard);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Special Elite', monospace;
-    font-size: 0.7rem;
-    color: var(--cream);
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  .goal-text { font-family: 'Special Elite', monospace; font-size: 0.82rem; line-height: 1.75; color: #3a2510; }
-  .goal-text strong { color: var(--brown); }
-
-  /* sidebar extras */
-  .passport-stamp {
-    background: #1a0a00;
-    border: 2px solid var(--mustard);
-    padding: 14px;
-    text-align: center;
-    margin-bottom: 8px;
-  }
-
-  .stamp-inner { border: 1px solid rgba(212,160,23,0.3); padding: 10px; }
-  .stamp-title { font-family: 'Playfair Display', serif; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mustard); margin-bottom: 4px; }
-  .stamp-name { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.4rem; color: var(--cream); }
-  .stamp-detail { font-family: 'Special Elite', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: rgba(212,160,23,0.6); text-transform: uppercase; margin-top: 4px; }
-
-  .stat-list { list-style: none; }
-
-  .stat-list li {
-    font-family: 'Special Elite', monospace;
-    font-size: 0.74rem;
-    color: var(--brown);
-    padding: 6px 0;
-    border-bottom: 1px dotted var(--fade);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .stat-list li:last-child { border-bottom: none; }
-  .stat-val { font-family: 'Caveat', cursive; color: var(--rust); font-size: 0.9rem; }
-
-  .tag-cloud { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
-
-  .tag {
-    background: var(--olive);
-    color: var(--cream);
-    font-size: 0.58rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 3px 7px;
-    font-family: 'Special Elite', monospace;
-  }
-
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-  @media (max-width: 700px) {
-    .hero-inner { grid-template-columns: 1fr; text-align: center; }
-    .hero-name { font-size: 3rem; }
-    .hero-name em { font-size: 2.2rem; }
-    .avatar-frame { margin: 0 auto; }
-    .credentials { justify-content: center; }
-    .main-wrap { grid-template-columns: 1fr; }
-    .sidebar { position: static; }
-    .hobby-grid { grid-template-columns: 1fr 1fr; }
-    .hero-nav { padding: 10px 18px; gap: 12px; }
-  }
-</style>
 </head>
+
 <body>
 
-<!-- ═══ HERO HEADER ═══ -->
+<!-- HERO -->
 <header class="hero">
-  <div class="hero-tape"></div>
-  <div class="hero-inner">
-    <div>
-      <span class="hero-eyebrow">✦ Expediente personal · Clasificación: Viajera Temporal</span>
-      <h1 class="hero-name">
-        Sofía
-        <em>del Mañana</em>
-      </h1>
-      <p class="hero-tagline">
-        Cronista interdimensional · Coleccionista de momentos irrepetibles<br>
-        Especialista en llegar al lugar correcto en el tiempo equivocado<br>
-        <strong style="color:var(--rust)">Siglo XXI · En tránsito</strong>
-      </p>
-      <div class="credentials">
-        <div class="cred-item">
-          <span class="cred-label">Origen</span>
-          <span class="cred-value">El futuro (aprox.)</span>
-        </div>
-        <div class="cred-item">
-          <span class="cred-label">Destino actual</span>
-          <span class="cred-value">1969, Bethel NY</span>
-        </div>
-        <div class="cred-item">
-          <span class="cred-label">Estado del portal</span>
-          <span class="cred-value">⚡ Activo</span>
-        </div>
-        <div class="cred-item">
-          <span class="cred-label">Equipaje</span>
-          <span class="cred-value">Un bloc & muchas preguntas</span>
-        </div>
-      </div>
-    </div>
-    <div class="hero-avatar">
-      <div class="avatar-frame">🕰️</div>
-      <p class="avatar-caption">Foto tomada en dos siglos distintos</p>
-    </div>
-    <div class="hero-bg-text">Sofía</div>
-  </div>
-  <nav class="hero-nav">
-    <a href="index.html">Inicio</a>
-    <a href="documental.html">El Documental</a>
-    <a href="movimiento.html">Hippismo</a>
-    <a href="historia.html">Historia del Festival</a>
-    <a href="artistas.html">Los Artistas</a>
-    <a href="bogota.html">Rock al Parque</a>
-    <a href="fuentes.html">Fuentes</a>
-    <a href="sobre-mi.html" class="active">Sobre Mí</a>
-  </nav>
-</header>
+<div class="hero-tape"></div>
 
-<!-- ═══ CONTENIDO ═══ -->
-<div class="main-wrap">
-  <main>
+<div class="hero-inner">
 
-    <div class="sticky-note">
-      <strong>📌 Para quien lea esto:</strong>
-      Este es mi expediente oficial. Si lo encontraste, probablemente estamos en el mismo siglo.
-      Si no, por favor devuélvelo al futuro. Tiene información sensible sobre mis gustos musicales
-      y mis planes de vida. Gracias. ☮
-    </div>
+<div>
+<span class="hero-eyebrow">✦ Expediente personal · Crononauta certificada</span>
 
-    <!-- CARD 1 -->
-    <div class="card">
-      <div class="tape"></div>
-      <div class="card-header">
-        <span class="card-header-num">01</span>
-        <span class="card-header-title">¿Quién es Sofía, en realidad?</span>
-        <span class="card-header-icon">🪪</span>
-      </div>
-      <div class="card-body">
-        <p class="card-text">
-          Depende de cuándo me preguntes. En el siglo XXI soy una estudiante con
-          demasiadas preguntas sobre el pasado y muy poca paciencia para las respuestas simples.
-          En 1969 soy una reportera que llegó sin credenciales, con barro hasta las rodillas
-          y la certeza de que algo extraordinario estaba pasando aquí.
-          <br><br>
-          <em>Lo que me define no cambia con el año en el dial:</em> soy alguien que cree
-          que las historias importan, que la música dice lo que las palabras no pueden,
-          y que el mejor lugar para entender el presente es, paradójicamente, el pasado.
-        </p>
+<h1 class="hero-name">
+Sofía Vega
+</h1>
 
-        <div class="warning-box">
-          <p>
-            ⚠ Dato técnico importante: viajo con un bloc de notas y sin cargador. El portal no tiene toma corriente.
-            Todo lo que escribo aquí fue anotado a mano, bajo la lluvia, con un bolígrafo que casi se seca en el día dos.
-            Si hay errores ortográficos, la culpa es del barro.
-          </p>
-        </div>
+<p class="hero-tagline">
+Crononauta certificada · Universidad McFly<br>
+<strong style="color:var(--rust)">Especialización en precisión histórica de soundtracks de películas de época</strong>
+</p>
 
-        <p class="card-text">
-          En términos más mundanos: me interesan las personas, los momentos que la historia oficial
-          decide no contar, las canciones que se escribieron para resistir algo, y los libros que
-          te dejan con más preguntas de las que traías. Llevo años intentando entender cómo el mundo
-          llegó a ser lo que es — y cada vez más sospecho que la respuesta está en los festivales
-          de música, no en los libros de texto.
-        </p>
-      </div>
-    </div>
-
-    <!-- CARD 2 -->
-    <div class="card">
-      <div class="tape"></div>
-      <div class="card-header">
-        <span class="card-header-num">02</span>
-        <span class="card-header-title">Lo que hago cuando no viajo en el tiempo</span>
-        <span class="card-header-icon">🎯</span>
-      </div>
-      <div class="card-body">
-        <p class="card-text">
-          Mis obsesiones son tres, y se repiten sin importar en qué década me encuentre.
-          He comprobado que funcionan igual en 1969 que en el presente:
-        </p>
-
-        <div class="hobby-grid">
-          <div class="hobby-item">
-            <span class="hobby-emoji">🎵</span>
-            <p class="hobby-name">Música & Conciertos</p>
-            <p class="hobby-note">Creo que los conciertos son la única forma legal de viajar en el tiempo sin un portal</p>
-          </div>
-          <div class="hobby-item">
-            <span class="hobby-emoji">📖</span>
-            <p class="hobby-name">Literatura & Escritura</p>
-            <p class="hobby-note">Leo lo que otros escribieron sobre el mundo y luego intento decirlo mejor</p>
-          </div>
-          <div class="hobby-item">
-            <span class="hobby-emoji">✈️</span>
-            <p class="hobby-name">Viajes</p>
-            <p class="hobby-note">El espacio-tiempo es grande. Me parece irresponsable quedarse quieta</p>
-          </div>
-        </div>
-
-        <div class="quote-block">
-          <blockquote>"Viajar es descubrir que todos tienen razón."</blockquote>
-          <cite>— Aldous Huxley · Aunque él no tenía portal, se las arreglaba bien</cite>
-        </div>
-
-        <p class="card-text">
-          La música y los libros son, básicamente, la misma cosa en distintos formatos:
-          <em>alguien que intenta decirte algo que no sabe cómo decir de otra manera.</em>
-          A eso le dedico la mayoría del tiempo que no paso viajando. Y cuando viajo, también.
-        </p>
-      </div>
-    </div>
-
-    <!-- CARD 3 -->
-    <div class="card">
-      <div class="tape"></div>
-      <div class="card-header">
-        <span class="card-header-num">03</span>
-        <span class="card-header-title">Mis viajes (ambos tipos)</span>
-        <span class="card-header-icon">🗺️</span>
-      </div>
-      <div class="card-body">
-        <p class="card-text">
-          Hay dos tipos de viajes: los que haces en avión y los que haces en portal.
-          Ambos te cambian. Ambos te dejan con la maleta llena de cosas que no traías.
-        </p>
-
-        <ul class="travel-list">
-          <li>
-            <span class="travel-flag">🇺🇸</span>
-            <div>
-              <span class="travel-era">Agosto 1969 · Portal temporal</span>
-              <strong>Bethel, Nueva York — Woodstock</strong><br>
-              El viaje que lo empezó todo. Vine a reportar un concierto y me encontré con media nación bailando en el barro. Todavía tengo barro en los zapatos. Literalmente.
-            </div>
-          </li>
-          <li>
-            <span class="travel-flag">🌎</span>
-            <div>
-              <span class="travel-era">Destino favorito · Siempre en la lista</span>
-              <strong>Latinoamérica — El continente que nunca termina de sorprenderme</strong><br>
-              Cada ciudad tiene su propia música, su propia historia. Bogotá, en particular, tiene algo que ningún otro lugar tiene: Rock al Parque.
-            </div>
-          </li>
-          <li>
-            <span class="travel-flag">📚</span>
-            <div>
-              <span class="travel-era">Viaje literario · Sin fecha de regreso</span>
-              <strong>Dentro de los libros — El destino más accesible</strong><br>
-              Cada libro es un portal. Algunos te llevan a lugares que no existen; otros te llevan exactamente adonde necesitas estar.
-            </div>
-          </li>
-          <li>
-            <span class="travel-flag">🎸</span>
-            <div>
-              <span class="travel-era">Viaje sonoro · Recurrente</span>
-              <strong>Conciertos — Los únicos viajes sin turbulencia</strong><br>
-              He comprobado que no importa en qué año estés: cuando la música empieza, el tiempo se detiene.
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- CARD 4 -->
-    <div class="card">
-      <div class="tape"></div>
-      <div class="card-header">
-        <span class="card-header-num">04</span>
-        <span class="card-header-title">Lo que quiero hacer con todo esto</span>
-        <span class="card-header-icon">🌱</span>
-      </div>
-      <div class="card-body">
-        <p class="card-text">
-          Alguien una vez me preguntó qué quería ser cuando creciera. Le dije que
-          <em>alguien que no deje de hacerse preguntas incómodas.</em>
-        </p>
-
-        <ul class="goals-list">
-          <li>
-            <div class="goal-num">1</div>
-            <p class="goal-text"><strong>Contar historias que importan.</strong> La escritura no es un hobby decorativo: es la herramienta con la que intento entender el mundo y explicárselo a los demás.</p>
-          </li>
-          <li>
-            <div class="goal-num">2</div>
-            <p class="goal-text"><strong>Entender la música como lenguaje político.</strong> Woodstock me lo demostró: una canción puede hacer lo que un discurso no logra.</p>
-          </li>
-          <li>
-            <div class="goal-num">3</div>
-            <p class="goal-text"><strong>Ver más del mundo, en todos los sentidos.</strong> Más países, más décadas, más perspectivas. El portal ayuda, pero incluso sin él, hay demasiado por descubrir.</p>
-          </li>
-          <li>
-            <div class="goal-num">4</div>
-            <p class="goal-text"><strong>Que algún día este blog sirva de algo.</strong> Si alguien lee estas crónicas y entiende mejor por qué Woodstock importó, habré hecho mi trabajo.</p>
-          </li>
-        </ul>
-
-        <div class="quote-block">
-          <blockquote>"El futuro pertenece a quienes creen en la belleza de sus sueños."</blockquote>
-          <cite>— Eleanor Roosevelt · Que tampoco tenía portal pero llegó lejos</cite>
-        </div>
-      </div>
-    </div>
-
-  </main>
-
-  <!-- ═══ SIDEBAR ═══ -->
-  <aside class="sidebar">
-
-    <div class="sidebar-widget">
-      <p class="widget-title">🪪 Pasaporte</p>
-      <div class="passport-stamp">
-        <div class="stamp-inner">
-          <p class="stamp-title">Viajera Certificada</p>
-          <p class="stamp-name">Sofía</p>
-          <p class="stamp-detail">Interdimensional · Clase Cronista</p>
-        </div>
-      </div>
-      <p style="font-family:'Caveat',cursive; font-size:0.82rem; color:var(--rust); text-align:center; margin-top:8px; font-style:italic">
-        Válido en todos los siglos
-      </p>
-    </div>
-
-    <div class="flowers">🌸 ☮ 🌼 ✌ 🌺</div>
-
-    <div class="sidebar-widget">
-      <p class="widget-title">📊 Datos de campo</p>
-      <ul class="stat-list">
-        <li>Décadas visitadas <span class="stat-val">2+</span></li>
-        <li>Conciertos en vivo <span class="stat-val">∞</span></li>
-        <li>Blocs de notas usados <span class="stat-val">muchos</span></li>
-        <li>Veces perdida en el tiempo <span class="stat-val">solo 3</span></li>
-        <li>Actos de violencia en Woodstock <span class="stat-val">0 ✓</span></li>
-        <li>Barro en los zapatos <span class="stat-val">aún</span></li>
-      </ul>
-    </div>
-
-    <div class="sidebar-widget">
-      <p class="widget-title">🎵 Banda sonora personal</p>
-      <p style="font-family:'Caveat',cursive; font-size:0.88rem; color:var(--brown); line-height:1.7">
-        Jimi Hendrix cuando necesito valor.<br>
-        Joan Baez cuando necesito calma.<br>
-        Janis Joplin cuando necesito sentir todo a la vez.<br>
-        <em style="color:var(--rust)">Y siempre, algo que haga querer bailar bajo la lluvia.</em>
-      </p>
-    </div>
-
-    <div class="sidebar-widget">
-      <p class="widget-title">🏷️ Lo que me define</p>
-      <div class="tag-cloud">
-        <span class="tag">Música</span>
-        <span class="tag">Literatura</span>
-        <span class="tag">Viajera</span>
-        <span class="tag">Cronista</span>
-        <span class="tag">Rock</span>
-        <span class="tag">Historia</span>
-        <span class="tag">Contracultura</span>
-        <span class="tag">Escritura</span>
-        <span class="tag">Paz ☮</span>
-      </div>
-    </div>
-
-    <div class="sidebar-widget" style="border-left: 3px solid var(--burnt)">
-      <p style="font-family:'Caveat',cursive; font-size:1.05rem; color:var(--brown); line-height:1.7; text-align:center; font-style:italic">
-        "No sé si el portal me trajo aquí o si simplemente siempre pertenecí a este momento."
-        <br><br>
-        <span style="font-size:0.68rem; color:var(--rust); letter-spacing:0.1em; font-style:normal">— SOFÍA · Nota de campo, Bethel 1969</span>
-      </p>
-    </div>
-
-  </aside>
 </div>
 
+<div class="hero-avatar">
+<div class="avatar-frame">🕰️</div>
+<p class="avatar-caption">Fotito de mi</p>
+</div>
+
+<div class="hero-bg-text">Sofía</div>
+
+</div>
+
+<nav class="hero-nav">
+<a href="sobre-mi.html" class="active">Sobre Mí</a>
+<a href="index.html">Inicio</a>
+<a href="documental.html">El Documental</a>
+<a href="movimiento.html">Hippismo</a>
+<a href="historia.html">Historia del Festival</a>
+<a href="artistas.html">Los Artistas</a>
+<a href="bogota.html">Rock al Parque</a>
+<a href="fuentes.html">Fuentes</a>
+</nav>
+
+</header>
+
+
+<div class="main-wrap">
+
+<main>
+
+<div class="sticky-note">
+<strong>📌 Nota del expediente:</strong>
+Este documento describe brevemente mi trayectoria académica como crononauta.
+Si llegó a esta página sin haber leído el resto del blog, probablemente
+le convenga empezar por el principio.
+</div>
+
+
+<!-- CARD 1 -->
+
+<div class="card">
+
+<div class="tape"></div>
+
+<div class="card-header">
+<span class="card-header-num">01</span>
+<span class="card-header-title">Mi formación</span>
+<span class="card-header-icon">🎓</span>
+</div>
+
+<div class="card-body">
+
+<p class="card-text">
+
+Soy Sofía Vega, crononauta certificada de la Universidad McFly y candidata
+a la especialización en <em>Historical Accuracy in Period Film Soundtracks</em>.
+
+<br><br>
+
+Mi área de estudio se centra en investigar eventos musicales históricos
+y analizar cómo ocurrieron realmente en comparación con la manera en que
+son representados posteriormente en películas, documentales y otras
+reconstrucciones culturales.
+
+<br><br>
+
+Aunque suene inusual, este campo combina historia cultural, música y
+metodología temporal. El objetivo es comprender cómo ciertos conciertos,
+movimientos musicales o festivales influyeron en su época y cómo
+terminaron formando parte del imaginario colectivo.
+
+</p>
+
+<div class="warning-box">
+
+<p>
+
+Una regla fundamental en la formación de crononautas es la no interferencia.
+Los viajes temporales con fines académicos están estrictamente regulados,
+especialmente cuando se estudian contextos culturales sensibles como
+la música.
+
+<br><br>
+
+Pequeñas intervenciones pueden alterar la trayectoria de artistas,
+canciones o incluso movimientos culturales completos.
+
+</p>
+
+</div>
+
+<p class="card-text">
+
+Por esta razón, la investigación histórica requiere observación cuidadosa,
+registro preciso de lo ocurrido y un profundo respeto por los contextos
+originales en los que se desarrollaron estos eventos.
+
+</p>
+
+</div>
+</div>
+
+
+
+<!-- CARD 2 -->
+
+<div class="card">
+
+<div class="tape"></div>
+
+<div class="card-header">
+<span class="card-header-num">02</span>
+<span class="card-header-title">Áreas de estudio</span>
+<span class="card-header-icon">📚</span>
+</div>
+
+<div class="card-body">
+
+<p class="card-text">
+
+El programa de crononautas de la Universidad McFly se basa en tres
+áreas principales que permiten estudiar la historia musical desde
+una perspectiva temporal.
+
+</p>
+
+
+<div class="hobby-grid">
+
+<div class="hobby-item">
+<span class="hobby-emoji">🕰️</span>
+<p class="hobby-name">Metodología temporal</p>
+<p class="hobby-note">Técnicas para observar eventos históricos sin alterar la línea temporal</p>
+</div>
+
+<div class="hobby-item">
+<span class="hobby-emoji">🎵</span>
+<p class="hobby-name">Historia de la música</p>
+<p class="hobby-note">Análisis de conciertos, festivales y movimientos culturales</p>
+</div>
+
+<div class="hobby-item">
+<span class="hobby-emoji">🎬</span>
+<p class="hobby-name">Precisión histórica</p>
+<p class="hobby-note">Estudio de representaciones del pasado en cine y medios</p>
+</div>
+
+</div>
+
+
+<p class="card-text">
+
+El propósito de esta especialización es entender hasta qué punto nuestras
+representaciones del pasado musical son fieles a lo que realmente ocurrió.
+
+<br><br>
+
+Muchos de los eventos que hoy consideramos históricos fueron vividos por
+sus participantes de maneras muy distintas a como los recordamos ahora.
+Investigar estos momentos permite reconstruirlos con mayor precisión
+y comprender mejor su impacto cultural.
+
+</p>
+
+</div>
+</div>
+
+
+</main>
+
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+<div class="sidebar-widget">
+
+<p class="widget-title">🪪 Pasaporte</p>
+
+<div class="passport-stamp">
+
+<div class="stamp-inner">
+<p class="stamp-title">Viajera Certificada</p>
+<p class="stamp-name">Sofía</p>
+<p class="stamp-detail">Universidad McFly</p>
+</div>
+
+</div>
+
+<p style="font-family:'Caveat',cursive; font-size:0.82rem; color:var(--rust); text-align:center; margin-top:8px; font-style:italic">
+Licencia temporal activa
+</p>
+
+</div>
+
+
+
+<div class="flowers">🌸 ☮ 🌼 ✌ 🌺</div>
+
+
+
+<div class="sidebar-widget">
+
+<p class="widget-title">📊 Datos académicos</p>
+
+<ul class="stat-list">
+
+<li>Institución <span class="stat-val">McFly</span></li>
+<li>Programa <span class="stat-val">Crononauta</span></li>
+<li>Especialización <span class="stat-val">Soundtracks</span></li>
+<li>Área de estudio <span class="stat-val">Historia musical</span></li>
+<li>Método principal <span class="stat-val">Observación</span></li>
+
+</ul>
+
+</div>
+
+
+
+<div class="sidebar-widget">
+
+<p class="widget-title">🏷️ Intereses</p>
+
+<div class="tag-cloud">
+
+<span class="tag">Música</span>
+<span class="tag">Historia</span>
+<span class="tag">Crononauta</span>
+<span class="tag">Festivales</span>
+<span class="tag">Rock</span>
+<span class="tag">Contracultura</span>
+<span class="tag">Archivo</span>
+<span class="tag">Investigación</span>
+
+</div>
+
+</div>
+
+
+</aside>
+
+</div>
+
+
+
 <footer>
-  <div class="flowers">☮ ✌ ☮ ✌ ☮</div><br>
-  <strong>Sofía del Mañana</strong> · Viajera, cronista, estudiante del espacio-tiempo<br>
-  Escrito en 1969 · Publicado en el presente · Para la clase de Rock & Política
-  <br><br>
-  <small style="opacity:0.5">© El portal regresará cuando termine la canción</small>
+
+<div class="flowers">☮ ✌ ☮ ✌ ☮</div><br>
+
+<strong>Sofía Vega</strong> · Crononauta · Universidad McFly<br>
+Investigación histórica de eventos musicales
+
+<br><br>
+
+<small style="opacity:0.5">
+© Documento archivado en el presente
+</small>
+
 </footer>
+
 
 </body>
 </html>
