@@ -5,6 +5,68 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Historia del Festival — Detrás del Tiempo</title>
 <link rel="stylesheet" href="style.css">
+<style>
+  /* ── Citation superscripts ── */
+  .cite-link {
+    font-size: 0.72em;
+    vertical-align: super;
+    color: var(--rust, #b85c38);
+    text-decoration: none;
+    font-family: 'Georgia', serif;
+    font-weight: 700;
+    margin-left: 1px;
+    border-bottom: 1px dotted var(--rust, #b85c38);
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .cite-link:hover {
+    color: var(--burnt, #8b3a1e);
+    border-color: var(--burnt, #8b3a1e);
+  }
+
+  /* ── Read-more toggle ── */
+  .text-expandable { position: relative; }
+  .text-collapsed .expandable-body {
+    max-height: 340px;
+    overflow: hidden;
+  }
+  .text-collapsed .fade-overlay { display: block; }
+  .fade-overlay {
+    display: none;
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 110px;
+    background: linear-gradient(to bottom, transparent, #fdf6e3);
+    pointer-events: none;
+  }
+  .read-more-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 14px;
+    background: none;
+    border: 2px solid var(--rust, #b85c38);
+    color: var(--rust, #b85c38);
+    font-family: 'Caveat', cursive, sans-serif;
+    font-size: 1.05rem;
+    padding: 6px 18px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    letter-spacing: 0.03em;
+  }
+  .read-more-toggle:hover {
+    background: var(--rust, #b85c38);
+    color: #fff;
+  }
+
+  /* ── Paragraphs ── */
+  .essay-paragraph {
+    font-size: 0.97rem;
+    line-height: 1.85;
+    margin-bottom: 1.1em;
+    color: var(--brown, #4a3728);
+  }
+</style>
 </head>
 <body>
 
@@ -47,15 +109,158 @@
         </div>
         <h1 class="card-title">"El festival que nadie quería en su ciudad y que cambió la historia"</h1>
 
-        <p class="text">
-          Hay algo que los organizadores del siglo XXI no entienden: Woodstock fue un milagro
-          caótico. <em>No hubo app de boletería. No hubo patrocinadores corporativos. No hubo
-          un plan B.</em> Solo cuatro jóvenes empresarios, un granjero generoso y medio millón
-          de personas que aparecieron de la nada. Esto es lo que pasó, desde mi privilegiada
-          perspectiva de viajera que conoce el final.
-        </p>
+        <!-- ── Expandable essay ── -->
+        <div class="text-expandable text-collapsed" id="essay-block">
+          <div class="expandable-body">
 
-        <div class="timeline">
+            <p class="essay-paragraph">
+              Queridos lectores, me complace informarles que he sobrevivido a dos días en Woodstock.
+              Hoy, rodeada de una cantidad francamente imposible de personas, no puedo evitar
+              preguntarme: ¿a quién se le ocurrió organizar todo esto? Porque una cosa es imaginar
+              un concierto grande, y otra muy distinta es terminar con cientos de miles de personas
+              caminando por una granja convertida en un océano de barro. (Confieso que hasta ahora
+              mi mayor referencia de "condiciones climáticas adversas" en conciertos era tener que
+              llevar impermeable al Vive Claro… claramente estaba viviendo en la ignorancia).
+            </p>
+
+            <p class="essay-paragraph">
+              Woodstock Ventures fue fundada en enero de 1969 por Michael Lang, Artie Kornfeld,
+              John Roberts y Joel Rosenman, cuatro hombres con perfiles distintos pero
+              complementarios: experiencia en festivales, conexiones con la industria discográfica
+              y capital para financiar la operación.<a href="fuentes.html#h1" class="cite-link" title="The Story Behind Woodstock – WAMC">[1]</a>
+              La idea inicial era construir un estudio de grabación y un retiro para artistas en
+              Woodstock, Nueva York, pero pronto esa propuesta evolucionó hacia un concierto masivo
+              que pudiera financiar el proyecto.<a href="fuentes.html#h1" class="cite-link" title="The Story Behind Woodstock – WAMC">[1]</a>
+              En otras palabras, Woodstock también fue, en algún momento de su vida, un plan de negocios.
+            </p>
+
+            <p class="essay-paragraph">
+              Desde el principio, el festival fue pensado como un evento comercial. Los organizadores
+              hablaron públicamente de una asistencia de 50.000 personas, aunque en realidad esperaban
+              más.<a href="fuentes.html#h4" class="cite-link" title="How Woodstock Happened – NHD">[4]</a>
+              El problema fue que encontrar dónde hacerlo resultó casi tan difícil como organizarlo.
+              Primero intentaron celebrarlo en Woodstock, luego en Saugerties y después en Wallkill,
+              pero en cada lugar apareció la misma reacción: miedo, rechazo y obstáculos
+              legales.<a href="fuentes.html#h7" class="cite-link" title="Woodstock Almost Came to Wallkill – WPDH">[7]</a>
+              Finalmente, cuando Wallkill prohibió oficialmente el concierto apenas un mes antes de
+              la fecha prevista, todo parecía a punto de venirse abajo.<a href="fuentes.html#h7" class="cite-link" title="Woodstock Almost Came to Wallkill – WPDH">[7]</a>
+              Fue entonces cuando apareció Max Yasgur, el granjero de Bethel que aceptó arrendar sus
+              tierras y, de paso, ganarse el disgusto eterno de varios vecinos.<a href="fuentes.html#h1" class="cite-link" title="The Story Behind Woodstock – WAMC">[1]</a>
+            </p>
+
+            <p class="essay-paragraph">
+              Claro que conseguir el terreno resolvió un problema, pero dejó intactos todos los
+              demás. El cambio de sede se hizo tan tarde que la infraestructura no alcanzó a
+              completarse: faltaban cercas, controles de acceso y buena parte de la logística
+              básica.<a href="fuentes.html#h4" class="cite-link" title="How Woodstock Happened – NHD">[4]</a>
+              Cuando la multitud comenzó a llegar días antes de lo esperado, los organizadores
+              tuvieron que decidir entre intentar contener a cientos de miles de personas o aceptar
+              la realidad y convertir el festival en un evento gratuito. Escogieron la segunda
+              opción.<a href="fuentes.html#h6" class="cite-link" title="The Story Behind Woodstock – WAMC">[6]</a>
+              A veces se recuerda esa decisión como un gesto heroico de generosidad hippie; otras
+              veces, y con bastante razón, como una medida práctica para evitar disturbios
+              masivos.<a href="fuentes.html#h6" class="cite-link" title="The Story Behind Woodstock – WAMC">[6]</a>
+              Sea como sea, el resultado fue que a las 186.000 entradas vendidas se sumaron cerca de
+              400.000 asistentes más, lo que convirtió la idea rentable en un desastre financiero
+              inmediato.<a href="fuentes.html#h3" class="cite-link" title="Woodstock – EBSCO Research Starters">[3]</a>
+            </p>
+
+            <p class="essay-paragraph">
+              A partir de ahí, Woodstock se desarrolló en una especie de equilibrio inestable entre
+              el caos absoluto y la cooperación inesperada. Las carreteras colapsaron, muchos
+              asistentes tuvieron que abandonar sus autos y caminar kilómetros, y el suministro de
+              comida, agua y artistas comenzó a depender en buena medida de
+              helicópteros.<a href="fuentes.html#h8" class="cite-link" title="The Origin of Woodstock – The River Reporter">[8]</a>
+              El gobernador Nelson Rockefeller llegó a declarar la zona como "área de
+              desastre".<a href="fuentes.html#h12" class="cite-link" title="Born and Died at Woodstock – TIME">[12]</a>
+              Si alguien quisiera diseñar sobre papel un ejemplo perfecto de lo que no se debe hacer
+              en la logística de un evento, probablemente terminaría haciendo algo sospechosamente
+              parecido a Woodstock.
+            </p>
+
+            <p class="essay-paragraph">
+              Y, sin embargo, lo más sorprendente es que el festival no se convirtió en una
+              explosión generalizada de violencia. En parte, esto se debió al papel del Hog Farm,
+              la comuna liderada por Wavy Gravy, que asumió funciones de seguridad y asistencia con
+              una lógica bastante distinta de la policía
+              tradicional.<a href="fuentes.html#h10" class="cite-link" title="Please Force: Wavy Gravy – 48 Hills">[10]</a>
+              En lugar de imponer orden mediante intimidación, crearon la "Please Force", una especie
+              de fuerza de seguridad basada en la amabilidad, la desescalada y el
+              acompañamiento.<a href="fuentes.html#h10" class="cite-link" title="Please Force: Wavy Gravy – 48 Hills">[10]</a>
+              También ayudaron a quienes sufrían malos viajes por LSD y colaboraron en la
+              distribución de comida cuando los vendedores comerciales ya no pudieron
+              operar.<a href="fuentes.html#h10" class="cite-link" title="Please Force: Wavy Gravy – 48 Hills">[10]</a>
+              Dicho de manera elegante: la contracultura improvisó una estructura de cuidado
+              comunitario. Dicho de manera menos elegante: el festival se sostuvo porque mucha gente
+              decidió cooperar en lugar de empeorar la situación.
+            </p>
+
+            <p class="essay-paragraph">
+              Tampoco, contra todo pronóstico, Woodstock se convirtió en un colapso sanitario total.
+              El equipo médico atendió aproximadamente a 3.000 personas, la mayoría por heridas
+              menores, especialmente cortes en los
+              pies.<a href="fuentes.html#h13" class="cite-link" title="Peace, Love & Health Care at Woodstock – PubMed">[13]</a>
+              Hubo numerosos casos de malos viajes, pero solo una parte reducida requirió atención
+              médica intensiva.<a href="fuentes.html#h16" class="cite-link" title="EMS at Woodstock – JEMS">[16]</a>
+              Oficialmente se confirmaron dos muertes.<a href="fuentes.html#h12" class="cite-link" title="Born and Died at Woodstock – TIME">[12]</a>
+              Considerando la escala del evento, la precariedad de las condiciones y el nivel de
+              improvisación general, el hecho de que no terminara en una tragedia mucho mayor
+              reforzó la imagen de Woodstock como una especie de milagro logístico accidental.
+            </p>
+
+            <p class="essay-paragraph">
+              Ahora bien, su legado no se debe únicamente a lo que ocurrió allí, sino también a la
+              forma en que luego se recordó. En lo económico, el festival fue inicialmente un
+              desastre, pero el documental <em>Woodstock: Three Days of Peace and Music</em> (1970)
+              transformó ese caos en una narrativa poderosa y
+              rentable.<a href="fuentes.html#h5" class="cite-link" title="Woodstock (1970) – IMDB">[5]</a>
+              La película ayudó a pagar las deudas, pero además hizo algo todavía más importante:
+              convirtió el evento en mito.<a href="fuentes.html#h5" class="cite-link" title="Woodstock (1970) – IMDB">[5]</a>
+              Para millones de personas que no estuvieron allí, Woodstock pasó a existir a través
+              de una secuencia muy específica de imágenes: lluvia, barro, guitarras, multitud,
+              comunidad y una generación convencida de que podía vivir de otra manera.
+            </p>
+
+            <p class="essay-paragraph">
+              A partir de ello, el legado de Woodstock puede pensarse en varios niveles. En primer
+              lugar, dejó una huella decisiva en la historia de los festivales musicales, sentando
+              las bases simbólicas del modelo de mega-festival que más tarde seguirían eventos como
+              Glastonbury, Coachella o
+              Lollapalooza.<a href="fuentes.html#h34" class="cite-link" title="Evolution of Music Festivals – Hellinger">[34]</a>
+              En segundo lugar, consolidó una iconografía duradera de la contracultura: la música
+              como protesta, la comunidad improvisada, el cuerpo cubierto de barro como uniforme
+              involuntario y la juventud como fuerza histórica
+              colectiva.<a href="fuentes.html#h3" class="cite-link" title="Woodstock – EBSCO Research Starters">[3]</a>
+              Pero quizá su legado más profundo sea cultural y simbólico. Woodstock representó el
+              punto culminante de una generación que creía posible transformar la sociedad a través
+              de la cooperación, la creatividad y la protesta cultural.
+            </p>
+
+            <p class="essay-paragraph">
+              Tristemente, el espíritu de Woodstock resultó difícil de reproducir en otros
+              contextos: festivales posteriores, como Altamont o incluso algunos intentos de recrear
+              Woodstock en décadas posteriores, demostraron que la mezcla particular de
+              circunstancias sociales, políticas y culturales de 1969 era prácticamente
+              irrepetible.<a href="fuentes.html#h3" class="cite-link" title="Woodstock – EBSCO Research Starters">[3]</a>
+              En definitiva, Woodstock 1969 no fue solo un concierto. Fue un experimento social
+              involuntario convertido en un símbolo cultural cuyo legado persiste porque convirtió
+              a la cultura juvenil en protagonista visible de la historia contemporánea y porque
+              dejó instalada una idea que, aunque un poco ingenua, sigue siendo difícil de ignorar:
+              que por unos días, realmente pareció posible cumplir el ideal de vida comunitaria
+              imaginado por tantos jóvenes de la
+              época.<a href="fuentes.html#h3" class="cite-link" title="Woodstock – EBSCO Research Starters">[3]</a>
+            </p>
+
+          </div><!-- /.expandable-body -->
+          <div class="fade-overlay"></div>
+        </div><!-- /.text-expandable -->
+
+        <button class="read-more-toggle" id="essay-toggle" onclick="toggleEssay()">
+          Leer más <em id="toggle-icon">▾</em>
+        </button>
+
+        <!-- ── Timeline ── -->
+        <div class="timeline" style="margin-top:32px">
           <div class="tl-item">
             <div class="tl-dot">1</div>
             <div class="tl-content">
@@ -102,7 +307,7 @@
             <div class="tl-dot">7</div>
             <div class="tl-content">
               <h5>Agosto 17–18, 1969 · Día 3 — El cierre</h5>
-              <p>Joe Cocker, Sly & The Family Stone, Crosby, Stills, Nash & Young. Jimi Hendrix cierra el festival el lunes 18 al amanecer, ante los pocos que quedaban, con una versión del himno nacional que se convirtió en el momento más político y recordado del festival.</p>
+              <p>Joe Cocker, Sly &amp; The Family Stone, Crosby, Stills, Nash &amp; Young. Jimi Hendrix cierra el festival el lunes 18 al amanecer, ante los pocos que quedaban, con una versión del himno nacional que se convirtió en el momento más político y recordado del festival.</p>
             </div>
           </div>
           <div class="tl-item">
@@ -114,7 +319,7 @@
           </div>
         </div>
 
-        <div class="academic-box">
+        <div class="academic-box" style="margin-top:28px">
           <h4>¿Por qué importa el legado de Woodstock hoy?</h4>
           <p>
             Woodstock fue la primera prueba a escala masiva de que era posible reunir a cientos
@@ -187,5 +392,24 @@
   <small style="opacity:0.5">© 2026</small>
 </footer>
 
+<script>
+  function toggleEssay() {
+    const block = document.getElementById('essay-block');
+    const btn   = document.getElementById('essay-toggle');
+    const icon  = document.getElementById('toggle-icon');
+    const isCollapsed = block.classList.contains('text-collapsed');
+    if (isCollapsed) {
+      block.classList.replace('text-collapsed', 'text-expanded');
+      btn.childNodes[0].textContent = 'Leer menos ';
+      icon.style.display = 'inline-block';
+      icon.style.transform = 'rotate(180deg)';
+    } else {
+      block.classList.replace('text-expanded', 'text-collapsed');
+      btn.childNodes[0].textContent = 'Leer más ';
+      icon.style.transform = 'rotate(0deg)';
+      block.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+</script>
 </body>
 </html>
